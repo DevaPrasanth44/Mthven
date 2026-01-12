@@ -12,11 +12,20 @@ pipeline {
 
         stage('Run Project') {
             steps {
-                sh '''
-                echo "Running project..."
-                ls -l
+                bat '''
+                echo Running project on Windows Jenkins
+                dir
                 '''
             }
+        }
+    }
+
+    post {
+        success {
+            echo '✅ Pipeline executed successfully'
+        }
+        failure {
+            echo '❌ Pipeline failed'
         }
     }
 }
